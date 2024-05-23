@@ -1,3 +1,7 @@
+# Notes
+
+This repository serves as a boilerplate for my typescript server projects.
+
 # Setting up a fresh project
 
 ## Dependencies
