@@ -25,3 +25,24 @@ Install the extras if needed:
 yarn add dotenv lodash cookie-parser cors winston
 yarn add -D @types/lodash @types/cookie-parser @types/cors nodemon
 ```
+
+# Cloning the project
+
+Clone the project
+
+```zsh
+git clone git@github.com:cwnghng/typescript-server-boilerplate.git new-project
+```
+
+Setup a new remote origin
+
+```zsh
+git remote remove origin
+git remote add origin git@github.com:myaccount/new-project.git
+```
+
+Push to new repo
+
+```zsh
+git push -u origin main
+```
