@@ -7,9 +7,9 @@ import HealthController from './controllers/health-controller';
 import { loggerMiddleware } from './middlewares/logger';
 import Logger from './utils/winstonLogger';
 import connectToMongoDb from './providers/mongo-provider';
-import TestController from './controllers/test-controller';
-import TestRepository from './repositories/test-repository';
-import TestService from './services/test-service';
+import IssueController from './controllers/issue-controller';
+import IssueRepository from './repositories/issue-repository';
+import IssueService from './services/issue-service';
 
 const SERVER_PORT = 8080;
 
@@ -20,10 +20,10 @@ dotenv.config();
   await connectToMongoDb();
 
   // Initialise Repositories
-  const testRepository = new TestRepository();
+  const issueRepository = new IssueRepository();
 
   // Initialise Services
-  const testService = new TestService(testRepository);
+  const issueService = new IssueService(issueRepository);
 
   const server = express();
   server.use(cookieParser());
@@ -40,7 +40,7 @@ dotenv.config();
   apiRouter.use(express.json());
   server.use('/api', apiRouter);
   apiRouter.use('/health', HealthController());
-  apiRouter.use('/test', TestController(testService));
+  apiRouter.use('/issue', IssueController(issueService));
 
   server.listen(SERVER_PORT, '0.0.0.0', () =>
     Logger.debug(`Server running on port ${SERVER_PORT}`),
