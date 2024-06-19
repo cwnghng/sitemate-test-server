@@ -27,6 +27,15 @@ class IssueService implements IIssueService {
     };
   }
 
+  async getIssueList() {
+    Logger.info('Getting issue list');
+    const issueDocuments = await this.issueRepository.getIssueList();
+
+    return {
+      issues: issueDocuments.map((issue) => issue.toObject()),
+    };
+  }
+
   async updateIssue(data: { id: string; title: string; description: string }) {
     Logger.info(`Updating issue: ${JSON.stringify(data)}`);
     const issueDocument = await this.issueRepository.updateIssueById(

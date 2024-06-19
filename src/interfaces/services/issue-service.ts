@@ -19,6 +19,14 @@ interface IIssueService {
     };
   }>;
 
+  getIssueList(): Promise<{
+    issues: {
+      id: string;
+      title: string;
+      description: string;
+    }[];
+  }>;
+
   updateIssue(data: {
     id: string;
     title: string;

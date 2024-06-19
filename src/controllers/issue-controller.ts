@@ -28,6 +28,15 @@ export default function IssueController(issueService: IssueService) {
     }
   });
 
+  router.get('/get-issue-list', async (req, res) => {
+    try {
+      const data = await issueService.getIssueList();
+      res.status(200).json(data);
+    } catch (err) {
+      handleRequestError(res, err);
+    }
+  });
+
   router.put('/update-issue', async (req, res) => {
     try {
       const data = await issueService.updateIssue(req.body);

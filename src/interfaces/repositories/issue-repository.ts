@@ -10,6 +10,8 @@ interface IIssueRepository {
 
   getIssueById(data: { id: string }): Promise<IssueDocument | null>;
 
+  getIssueList(): Promise<IssueDocument[]>;
+
   updateIssueById(
     data: {
       id: string;

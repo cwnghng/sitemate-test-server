@@ -20,6 +20,12 @@ class IssueRepository implements IIssueRepository {
     return result;
   }
 
+  async getIssueList(): Promise<IssueDocument[]> {
+    const result = await IssueModel.find();
+
+    return result;
+  }
+
   async updateIssueById(
     filter: {
       id: string;
